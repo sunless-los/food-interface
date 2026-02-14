@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodHub - Order Your Favorites</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🍔</span>
+                <span class="logo-text">HAMZA</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#profile" class="nav-link">Profile</a>
+                <a href="#orders" class="nav-link">Your Orders</a>
+                <a href="#search" class="nav-link">Search</a>
+            </div>
+            <div class="user-actions">
+                <div class="credits-display">
+                    <span class="credits-label">Credits:</span>
+                    <span class="credits-value">250</span>
+                </div>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <h1 class="hero-title">Delicious Food<br>Delivered Fast</h1>
+                    <p class="hero-subtitle">Choose from our wide selection of veg & non-veg delights</p>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <div class="container">
+                    <button class="filter-btn active" onclick="filterCategory('all')">All</button>
+                    <button class="filter-btn veg" onclick="filterCategory('veg')">🌱 Veg</button>
+                    <button class="filter-btn non-veg" onclick="filterCategory('non-veg')">🍖 Non-Veg</button>
+                    <button class="filter-btn" onclick="filterCategory('drinks')">🥤 Drinks</button>
+                    <button class="filter-btn" onclick="filterCategory('desserts')">🍰 Desserts</button>
+                </div>
+            </div>
+
+            <!-- Food Menu -->
+            <div class="container">
+                <!-- Veg Items -->
+                <div class="menu-section" data-category="veg">
+                    <h2 class="section-title">
+                        <span class="veg-badge">VEG</span>
+                        Vegetarian Delights
+                    </h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-type="veg">
+                            <div class="item-image">🍕</div>
+                            <h3 class="item-name">Margherita Pizza</h3>
+                            <p class="item-desc">Classic tomato, mozzarella & basil</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹299</span>
+                                <button class="add-btn" onclick="addToCart('Margherita Pizza', 299, 'veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="veg">
+                            <div class="item-image">🍔</div>
+                            <h3 class="item-name">Veggie Burger</h3>
+                            <p class="item-desc">Loaded with fresh vegetables</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹149</span>
+                                <button class="add-btn" onclick="addToCart('Veggie Burger', 149, 'veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="veg">
+                            <div class="item-image">🌮</div>
+                            <h3 class="item-name">Veg Tacos</h3>
+                            <p class="item-desc">3 crispy tacos with beans & salsa</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹199</span>
+                                <button class="add-btn" onclick="addToCart('Veg Tacos', 199, 'veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="veg">
+                            <div class="item-image">🍟</div>
+                            <h3 class="item-name">French Fries</h3>
+                            <p class="item-desc">Crispy golden fries</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹99</span>
+                                <button class="add-btn" onclick="addToCart('French Fries', 99, 'veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="veg">
+                            <div class="item-image">🥗</div>
+                            <h3 class="item-name">Garden Salad</h3>
+                            <p class="item-desc">Fresh greens with vinaigrette</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹179</span>
+                                <button class="add-btn" onclick="addToCart('Garden Salad', 179, 'veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="veg">
+                            <div class="item-image">🥪</div>
+                            <h3 class="item-name">Paneer Sandwich</h3>
+                            <p class="item-desc">Grilled with mint chutney</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹129</span>
+                                <button class="add-btn" onclick="addToCart('Paneer Sandwich', 129, 'veg')">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Non-Veg Items -->
+                <div class="menu-section" data-category="non-veg">
+                    <h2 class="section-title">
+                        <span class="non-veg-badge">NON-VEG</span>
+                        Non-Vegetarian Specials
+                    </h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-type="non-veg">
+                            <div class="item-image">🍗</div>
+                            <h3 class="item-name">Fried Chicken</h3>
+                            <p class="item-desc">Crispy & juicy chicken pieces</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹249</span>
+                                <button class="add-btn" onclick="addToCart('Fried Chicken', 249, 'non-veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="non-veg">
+                            <div class="item-image">🍔</div>
+                            <h3 class="item-name">Chicken Burger</h3>
+                            <p class="item-desc">Grilled chicken patty deluxe</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹189</span>
+                                <button class="add-btn" onclick="addToCart('Chicken Burger', 189, 'non-veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="non-veg">
+                            <div class="item-image">🍕</div>
+                            <h3 class="item-name">Pepperoni Pizza</h3>
+                            <p class="item-desc">Loaded with pepperoni & cheese</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹349</span>
+                                <button class="add-btn" onclick="addToCart('Pepperoni Pizza', 349, 'non-veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="non-veg">
+                            <div class="item-image">🌭</div>
+                            <h3 class="item-name">Hot Dog</h3>
+                            <p class="item-desc">Classic with mustard & ketchup</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹119</span>
+                                <button class="add-btn" onclick="addToCart('Hot Dog', 119, 'non-veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="non-veg">
+                            <div class="item-image">🌮</div>
+                            <h3 class="item-name">Chicken Tacos</h3>
+                            <p class="item-desc">3 tacos with spicy chicken</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹229</span>
+                                <button class="add-btn" onclick="addToCart('Chicken Tacos', 229, 'non-veg')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="non-veg">
+                            <div class="item-image">🍖</div>
+                            <h3 class="item-name">BBQ Wings</h3>
+                            <p class="item-desc">6 pieces with BBQ sauce</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹269</span>
+                                <button class="add-btn" onclick="addToCart('BBQ Wings', 269, 'non-veg')">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drinks -->
+                <div class="menu-section" data-category="drinks">
+                    <h2 class="section-title">
+                        <span class="drinks-badge">DRINKS</span>
+                        Refreshing Beverages
+                    </h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-type="drinks">
+                            <div class="item-image">🥤</div>
+                            <h3 class="item-name">Coca Cola</h3>
+                            <p class="item-desc">Chilled 500ml bottle</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹49</span>
+                                <button class="add-btn" onclick="addToCart('Coca Cola', 49, 'drinks')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="drinks">
+                            <div class="item-image">🧃</div>
+                            <h3 class="item-name">Fresh Orange Juice</h3>
+                            <p class="item-desc">Freshly squeezed</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹79</span>
+                                <button class="add-btn" onclick="addToCart('Fresh Orange Juice', 79, 'drinks')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="drinks">
+                            <div class="item-image">☕</div>
+                            <h3 class="item-name">Iced Coffee</h3>
+                            <p class="item-desc">Cold brew perfection</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹89</span>
+                                <button class="add-btn" onclick="addToCart('Iced Coffee', 89, 'drinks')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="drinks">
+                            <div class="item-image">🥛</div>
+                            <h3 class="item-name">Mango Lassi</h3>
+                            <p class="item-desc">Creamy & sweet</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹69</span>
+                                <button class="add-btn" onclick="addToCart('Mango Lassi', 69, 'drinks')">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-section" data-category="desserts">
+                    <h2 class="section-title">
+                        <span class="desserts-badge">DESSERTS</span>
+                        Sweet Endings
+                    </h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-type="desserts">
+                            <div class="item-image">🍰</div>
+                            <h3 class="item-name">Chocolate Cake</h3>
+                            <p class="item-desc">Rich & moist slice</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹129</span>
+                                <button class="add-btn" onclick="addToCart('Chocolate Cake', 129, 'desserts')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="desserts">
+                            <div class="item-image">🍦</div>
+                            <h3 class="item-name">Vanilla Ice Cream</h3>
+                            <p class="item-desc">2 scoops premium</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹99</span>
+                                <button class="add-btn" onclick="addToCart('Vanilla Ice Cream', 99, 'desserts')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="desserts">
+                            <div class="item-image">🍩</div>
+                            <h3 class="item-name">Glazed Donut</h3>
+                            <p class="item-desc">Freshly made & glazed</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹59</span>
+                                <button class="add-btn" onclick="addToCart('Glazed Donut', 59, 'desserts')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="desserts">
+                            <div class="item-image">🧁</div>
+                            <h3 class="item-name">Red Velvet Cupcake</h3>
+                            <p class="item-desc">With cream cheese frosting</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹79</span>
+                                <button class="add-btn" onclick="addToCart('Red Velvet Cupcake', 79, 'desserts')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="desserts">
+                            <div class="item-image">🍪</div>
+                            <h3 class="item-name">Choco Chip Cookies</h3>
+                            <p class="item-desc">Pack of 4 cookies</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹89</span>
+                                <button class="add-btn" onclick="addToCart('Choco Chip Cookies', 89, 'desserts')">Add +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-type="desserts">
+                            <div class="item-image">🍮</div>
+                            <h3 class="item-name">Caramel Pudding</h3>
+                            <p class="item-desc">Smooth & creamy</p>
+                            <div class="item-footer">
+                                <span class="item-price">₹69</span>
+                                <button class="add-btn" onclick="addToCart('Caramel Pudding', 69, 'desserts')">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profile" class="page">
+            <div class="container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <h2 class="profile-name">Guest User</h2>
+                        <p class="profile-email">guest@foodhub.com</p>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">250</span>
+                            <span class="stat-label">Credits Available</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">0</span>
+                            <span class="stat-label">Total Orders</span>
+                        </div>
+                    </div>
+                    <div class="credits-info">
+                        <h3>About Credits</h3>
+                        <p>Use your credits for instant discounts!</p>
+                        <p class="credits-rate">10 Credits = ₹1 Discount</p>
+                    </div>
+                    <button class="logout-btn" onclick="showLogin()">Login / Sign Up</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Page -->
+        <section id="orders" class="page">
+            <div class="container">
+                <h2 class="page-title">Order History</h2>
+                <div id="order-history" class="order-history">
+                    <div class="empty-state">
+                        <div class="empty-icon">📦</div>
+                        <p>No orders yet</p>
+                        <p class="empty-subtitle">Start ordering your favorite food!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Page -->
+        <section id="search" class="page">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search for food..." oninput="searchFood()">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div id="search-results" class="search-results">
+                    <p class="search-prompt">Type to search for your favorite food</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <div class="empty-cart">
+                <div class="empty-icon">🛒</div>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="discount-section">
+                <label for="credits-use">Use Credits (10 = ₹1)</label>
+                <input type="number" id="credits-use" min="0" max="250" value="0" oninput="updateDiscount()">
+            </div>
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">₹0</span>
+                </div>
+                <div class="total-row discount-row">
+                    <span>Discount:</span>
+                    <span id="cart-discount">-₹0</span>
+                </div>
+                <div class="total-row final-total">
+                    <span>Total:</span>
+                    <span id="cart-total">₹0</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLogin()">✕</button>
+            <div id="login-form" class="auth-form">
+                <h2>Welcome Back</h2>
+                <form onsubmit="return false;">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+            </div>
+            <div id="signup-form" class="auth-form" style="display: none;">
+                <h2>Create Account</h2>
+                <form onsubmit="return false;">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
